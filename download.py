@@ -12,3 +12,5 @@ if page.exists() :
         file.write(page.text)
 else :
     print("page not found")
+
+    

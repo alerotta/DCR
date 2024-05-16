@@ -9,6 +9,7 @@ mydb = mysql.connector.connect(
 )
 
 
+
 mycursor = mydb.cursor()
 
 sql_query = "SELECT filename FROM file_storage WHERE name LIKE %s"

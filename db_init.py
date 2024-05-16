@@ -13,6 +13,8 @@ mydb = mysql.connector.connect(
     database = "digital_content_retrieval"
 )
 
+
+
 mycursor = mydb.cursor()
 sql = "INSERT INTO file_storage (filename,name,content,extension) VALUES (%s,%s,%s,%s)"
 values = []
