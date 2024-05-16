@@ -21,7 +21,8 @@ for root, directories, files in os.walk(directory):
     rel_root = os.path.relpath(root, directory)
 
     if skip_dir in directories :
-        directories.remove(skip_dir)
+        directories.remove(skip_dir) 
+        
     
 
     for file in files:
