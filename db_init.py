@@ -4,6 +4,7 @@ import os
 
 directory = '/Users/alessandrorotta/desktop/project'
 skip_dir = "dcr_env"
+skip_dir1 = ".git"
 text_ext = ['txt','csv','tsv','json','xml','yaml','yml','htm','html','md','ini']
 
 mydb = mysql.connector.connect(
@@ -23,7 +24,8 @@ for root, directories, files in os.walk(directory):
     rel_root = os.path.relpath(root, directory)
 
     if skip_dir in directories :
-        directories.remove(skip_dir) 
+        directories.remove(skip_dir)
+        directories.remove(skip_dir1)  
         
     
 
@@ -34,10 +36,12 @@ for root, directories, files in os.walk(directory):
         if (file[0] == '.'):
             continue
 
-        
-
     
         file_ext = file.split('.')
+
+        if len(file_ext) == 1 :
+            continue
+
         if file_ext[1] in text_ext :
             txtfile = open(directory +'/'+p,'r',encoding='utf-8') 
             content = txtfile.read()
@@ -47,6 +51,10 @@ for root, directories, files in os.walk(directory):
 
         mycursor.execute(sql,val)
         mydb.commit()
+
+    val = (rel_root,rel_root.split("/")[-1],None,"dir")
+    mycursor.execute(sql,val)
+    mydb.commit()
     
     
         
